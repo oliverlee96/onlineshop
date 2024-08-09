@@ -10,7 +10,8 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(express.static('public')); //ensures the public folder is served statically
+app.use(express.static('public'));  //ensures the public folder is served statically
+app.use(express.urlencoded({ extended: false })); //handling submitted form data
 
 app.use(authRoutes);
 

@@ -1,5 +1,5 @@
 const mongodb = require('mongodb');
-const { connect } = require('../routes/auth.routes');
+//const { connect } = require('../routes/auth.routes');
 
 const MongoClient = mongodb.MongoClient;
 
