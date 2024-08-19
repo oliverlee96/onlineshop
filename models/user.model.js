@@ -15,6 +15,10 @@ class User {
         };
     }
 
+    getUserWithSameEmail() { //find if user exists by checking email in db
+        return db.getDb().collection('users').findOne({ email: this.email });
+    }
+
     async signup() {
         const hashedPassword = await bcrypt.hash(this.password, 12); //takes in the password and value of hash length
         await db.getDb().collection('users').insertOne({
@@ -23,6 +27,10 @@ class User {
             name: this.name,
             address: this.address
         });
+    }
+
+    checkPassword(hashedPassword) {
+        return bcrypt.compare(this.password, hashedPassword);
     }
 }
 
