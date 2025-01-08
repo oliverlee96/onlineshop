@@ -6,36 +6,42 @@
     <%- include('../../shared/includes/header') %>
     <main>
         <h1>Create New Account</h1>
+        <% if (inputData.errorMessage) { %>
+            <section class="alert">
+                <h2>Invalid Input</h2>
+                <p> <%= inputData.errorMessage %> </p>
+            </section>
+        <% } %>
         <form action="/signup" method="POST">
             <input type="hidden" name="_csrf" value="<%= locals.csrfToken %>">
             <div>
                 <label for="email">Email</label>
-                <input type="email" name="email" id="email" required> 
+                <input type="email" name="email" id="email" value="<%= inputData.email %>" required> 
             </div>
             <div>
                 <label for="confirm-email">Confirm email</label>
-                <input type="email" name="confirm-email" id="confirm-email" required> 
+                <input type="email" name="confirm-email" id="confirm-email" value="<%= inputData.confirmEmail %>" required> 
             </div>
             <div>
                 <label for="password">Password</label>
-                <input type="password" name="password" id="password" minlength="10" required> 
+                <input type="password" name="password" id="password" minlength="10" value="<%= inputData.password %>" required> 
             </div>
             <hr>
             <div>
                 <label for="fullname">Full name</label>
-                <input type="text" name="fullname" id="fullname" required> 
+                <input type="text" name="fullname" id="fullname" value="<%= inputData.fullname %>" required> 
             </div>
             <div>
                 <label for="address">Address</label>
-                <input type="text" name="address" id="address" required> 
+                <input type="text" name="address" id="address" value="<%= inputData.address %>" required> 
             </div>
             <div>
                 <label for="city">City</label>
-                <input type="text" name="city" id="city" required> 
+                <input type="text" name="city" id="city" value="<%= inputData.city %>" required> 
             </div>
             <div>
                 <label for="postcode">Postcode</label>
-                <input type="text" name="postcode" id="postcode" required> 
+                <input type="text" name="postcode" id="postcode" value="<%= inputData.postcode %>" required> 
             </div>
             <button class="btn">Create Account</button>
             <p id="switch-form"><a href="/login">Already have an account? Login</a></p>
